@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "24c3946acc997e3f3eca7fc5c99585b2",
-    "content-hash": "5fd7134886112f1f007768c20daa4f42",
+    "hash": "72aa8d41a93b3ee7292e92c7b0f79bf6",
+    "content-hash": "f5f6256a8bd2fbbd70d7496c26158e66",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -886,6 +886,51 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
+        },
+        {
+            "name": "princealikhan/paytm-payment",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/princealikhan/paytm-payment.git",
+                "reference": "9971fa920b54cd3e5231756d727567e1d32c9f5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/princealikhan/paytm-payment/zipball/9971fa920b54cd3e5231756d727567e1d32c9f5d",
+                "reference": "9971fa920b54cd3e5231756d727567e1d32c9f5d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.0.*|5.1.*|5.2.*|5.3.*",
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Princealikhan\\PaytmPayment\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Prince Ali Khan",
+                    "email": "princealikhan08@gmail.com"
+                }
+            ],
+            "description": "Payment Integration with Paytm.",
+            "keywords": [
+                "gateway",
+                "india",
+                "laravel",
+                "payment",
+                "paytm"
+            ],
+            "time": "2016-11-16 16:06:18"
         },
         {
             "name": "psr/log",
