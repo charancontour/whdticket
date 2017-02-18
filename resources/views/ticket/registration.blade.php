@@ -91,6 +91,17 @@
 							</div>
 						</div>
 						
+						@foreach($tickets as $ticket)
+							<div class="form-group">
+							    <label class="col-md-4 control-label"></label>
+							    <div class="col-md-6">
+								    <input type="radio" class="form-check-input" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" required>
+								    {{$ticket->description}}
+							    </div>					        
+						    </div>
+					    @endforeach
+					    
+
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">

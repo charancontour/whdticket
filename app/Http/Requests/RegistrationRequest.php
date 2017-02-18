@@ -32,6 +32,7 @@ class RegistrationRequest extends Request {
 			'state' 		=> 'required',
 			'zipcode' 		=> 'required',
 			'country' 		=> 'required',
+			'ticket_id'		=> 'required|exists:tickets,id',
 		];
 	}
 

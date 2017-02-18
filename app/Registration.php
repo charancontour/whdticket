@@ -4,6 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model {
 
-	protected $fillable = ['name','address','phonenumber','state','country','city','zipcode','organization','email','designation'];
+	protected $fillable = ['ticket_id','name','address','phonenumber','state','country','city','zipcode','organization','email','designation'];
+
+	public function ticket()
+    {
+        return $this->belongsTo('App\Ticket');
+    }
 
 }

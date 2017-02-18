@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Registration;
+use App\Ticket;
 class RegistrationController extends Controller {
 
 	/**
@@ -13,7 +14,8 @@ class RegistrationController extends Controller {
 	 */
 	public function create()
 	{
-		return view('ticket.registration');
+		$tickets = Ticket::all();
+		return view('ticket.registration')->with('tickets',$tickets);
 	}
 
 	/**
@@ -23,7 +25,9 @@ class RegistrationController extends Controller {
 	{	
 		$input = $request->all();
 		$regitration = Registration::create($input);
-		return view('payment');
+		return redirect("payment/$registration->id");
 	}
+	
+
 
 }
