@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Request;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -32,13 +34,6 @@ class WelcomeController extends Controller {
 	{
 		return view('welcome');
 	}
-
-	/**
-	 * Registration for a ticket.
-	 */
-	public function registerTicket()
-	{
-		return view('ticket.registration');
-	}
+	
 
 }

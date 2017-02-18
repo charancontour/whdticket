@@ -8,7 +8,17 @@
 				<div class="panel-heading">Register Now!!</div>
 
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('#') }}">
+					@if (count($errors) > 0)
+						<div class="alert alert-danger">
+							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -77,7 +87,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Country*</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="Country" value="{{ old('Country') }}" required>
+								<input type="text" class="form-control" name="country" value="{{ old('Country') }}" required>
 							</div>
 						</div>
 						

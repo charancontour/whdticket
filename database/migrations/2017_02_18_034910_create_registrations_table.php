@@ -18,7 +18,7 @@ class CreateRegistrationsTable extends Migration {
 			$table->integer('ticket_id')->unsigned();
 			$table->double('amount');
 			$table->string('name');
-			$table->string('organiation');
+			$table->string('organization');
 			$table->string('designation');
 			$table->text('address');
 			$table->string('city');

@@ -14,7 +14,12 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
-Route::get('register','WelcomeController@registerTicket');
+
+/**
+ * Registration Routes.
+ */
+Route::get('register','RegistrationController@create');
+Route::post('register','RegistrationController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
