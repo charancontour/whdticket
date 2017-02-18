@@ -33,4 +33,12 @@ class WelcomeController extends Controller {
 		return view('welcome');
 	}
 
+	/**
+	 * Registration for a ticket.
+	 */
+	public function registerTicket()
+	{
+		return view('ticket.registration');
+	}
+
 }
