@@ -8,7 +8,7 @@
 				<div class="panel-heading">Payment</div>
 
 				<div class="panel-body">
-					<table class="table table-striped table-bordered">
+					<table class="table table-striped table-bordered" width="100%">
 						<tr>
 							<td>Name</td>
 							<td>{{$registration->name}}</td>
@@ -55,11 +55,22 @@
 						</tr>					
 						<tr>
 							<td>Ticket Amount</td>
-							<td>{{$registration->ticket->amount}}</td>
+							<td>{{$registration->amount}}</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align:center">Payment Options</td>
 						</tr>
+						<tr>
+							<td colspan="2" style="text-align:center">
+								<form method="post" action="/paytm">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="registration_id" value="{{$registration->id}}">
+									<div class="form-group">										
+										<input type="submit" value="Pay with Paytm">
+									</div>
+								</form>
+							</td>
+						</tr>												
 					</table>
 				</div>
 			</div>

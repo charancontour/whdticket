@@ -23,10 +23,19 @@ class RegistrationController extends Controller {
 	 */
 	public function store(Requests\RegistrationRequest $request)
 	{	
-		$input = $request->all();
+		$input = $request->all();		
+
+		if($input['ticket_id'] == 3){
+			if($input['amount'] == 0){
+				return redirect()->back()->withErrors(['amount'=>'Amount should be greater than 0.']);
+			}
+		}
 		$registration = Registration::create($input);
-		$registration->amount = $registration->ticket->amount;
-		$registration->save();
+
+		if($registration->ticket->id != 3){
+			$registration->amount = $registration->ticket->amount;
+			$registration->save();	
+		}				
 		return redirect("payment/$registration->id");
 	}
 	

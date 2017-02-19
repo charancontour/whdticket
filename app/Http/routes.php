@@ -26,8 +26,9 @@ Route::post('register','RegistrationController@store');
 /**
  * Payment Request.
  */
+
 Route::get('payment/{registration_id}','PaymentController@index');
-Route::get('/paytm','PaymentController@sendRequestToPaytm');
+Route::post('/paytm','PaymentController@sendRequestToPaytm');
 Route::post('/paytm/callback','PaymentController@callbackRequestFromPaytm');
 
 Route::controllers([

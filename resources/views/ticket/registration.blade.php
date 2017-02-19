@@ -90,16 +90,19 @@
 								<input type="text" class="form-control" name="country" value="{{ old('Country') }}" required>
 							
 						</div>
-						
+						<br>
+						<h3 style = 'text-align:center'>Tickets</h3>
+						<br>
 						@foreach($tickets as $ticket)
-							<div class="form-group">
-							    <label class="col-md-4 control-label"></label>
-							    
-								    <input type="radio" class="form-check-input" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" required>
-									{{$ticket->description}}
+							<div class="">															    
+								<input type="radio" class="form-check-input" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" required>
+								{{$ticket->description}}
+								@if($ticket->amount == 0)
+								<input type="number" name="amount">
+								@endif								
 						    </div>
-					    @endforeach
-					    
+					    @endforeach	
+					    <br>				    
 
 						<div class="form-group">
 							<input type="submit" value="Register">
