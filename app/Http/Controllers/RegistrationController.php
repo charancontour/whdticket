@@ -24,7 +24,9 @@ class RegistrationController extends Controller {
 	public function store(Requests\RegistrationRequest $request)
 	{	
 		$input = $request->all();
-		$regitration = Registration::create($input);
+		$registration = Registration::create($input);
+		$registration->amount = $registration->ticket->amount;
+		$registration->save();
 		return redirect("payment/$registration->id");
 	}
 	
