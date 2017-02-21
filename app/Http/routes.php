@@ -15,6 +15,12 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+
+/**
+ * Admin Routes.
+ */
+Route::get('dashboard','AdminController@index');
+
 /**
  * Registration Routes.
  */
