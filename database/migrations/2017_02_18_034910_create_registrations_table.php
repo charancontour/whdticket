@@ -27,6 +27,7 @@ class CreateRegistrationsTable extends Migration {
 			$table->string('country');
 			$table->string('phonenumber');
 			$table->string('email');
+			$table->boolean('paid_flag');
 			$table->timestamps();
 			$table->foreign('ticket_id')->references('id')->on('tickets');
 		});

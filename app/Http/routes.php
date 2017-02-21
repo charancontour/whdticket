@@ -31,6 +31,15 @@ Route::get('payment/{registration_id}','PaymentController@index');
 Route::post('/paytm','PaymentController@sendRequestToPaytm');
 Route::post('/paytm/callback','PaymentController@callbackRequestFromPaytm');
 
+
+Route::get('success',function(){
+	return "SUccess";
+});
+
+Route::get('failure',function(){
+	return "Failure";
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

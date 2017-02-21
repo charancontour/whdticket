@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Registration;
 use App\Transaction;
+use App\PaytmTransaction;
 use Paytm;
+
 
 class PaymentController extends Controller {
 
@@ -18,6 +20,7 @@ class PaymentController extends Controller {
 	public function index($registration_id)
 	{
 		$registration  = Registration::findOrFail($registration_id);
+		
 		return view('payment')->with('registration',$registration);	
 	}
 	
@@ -31,8 +34,16 @@ class PaymentController extends Controller {
 		$registration = Registration::where('id',$input['registration_id'])->where('paid_flag','0')->first();
 		if(!$registration){
 			return redirect()->back();
-		}
-		$request = array('CUST_ID' => 1 ,'TXN_AMOUNT'=> 1 ,'CALLBACK_URL' => 'http://whdticket.dev/paytm/callback');
+		}		
+		$registration->registered_flag = 1;
+		$registration->payment_method = 'paytm';
+		$registration->save();
+		$request = array(
+				'CUST_ID' => 1 ,
+				'TXN_AMOUNT'=> 1 ,
+				'CALLBACK_URL' => 'http://whdticket.dev/paytm/callback',
+				'ORDER_ID' => $registration->id,				
+				);
 		return Paytm::pay($request);
 		
 	}
@@ -41,7 +52,18 @@ class PaymentController extends Controller {
 	 * Call back function for paytm.
 	 */
 	public function callbackRequestFromPaytm(Request $request){
-		dd($request->all());
+		$paymentResponse =  $request->all();
+		$paymentData     =  Paytm::verifyPayment($paymentResponse);		
+		if($paymentData['status'] == 'success'){			
+			$registration = Registration::where('id',$paymentData['data']['ORDERID'])->first();
+			$registration->paid_flag = 1;
+			$registration->save();
+			$registration->ticket->tickets_sold++;
+			$registration->ticket->save();
+			$paytm_transaction = PaytmTransaction::create($paymentData['data']);
+			return redirect('success');
+		}
+		return redirect('failure');		
 	}
 
 
