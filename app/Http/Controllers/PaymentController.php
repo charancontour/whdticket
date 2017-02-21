@@ -8,7 +8,7 @@ use App\Registration;
 use App\Transaction;
 use App\PaytmTransaction;
 use Paytm;
-
+use Mail;
 
 class PaymentController extends Controller {
 
@@ -19,8 +19,9 @@ class PaymentController extends Controller {
 	 */
 	public function index($registration_id)
 	{
-		$registration  = Registration::findOrFail($registration_id);
-		
+		$registration  = Registration::where('id',$registration_id)
+										->where('paid_flag',0)
+										->first();		
 		return view('payment')->with('registration',$registration);	
 	}
 	
@@ -31,7 +32,9 @@ class PaymentController extends Controller {
 	public function sendRequestToPaytm(Request $request)
 	{
 		$input = $request->all();
-		$registration = Registration::where('id',$input['registration_id'])->where('paid_flag','0')->first();
+		$registration = Registration::where('id',$input['registration_id'])
+										->where('paid_flag','0')
+										->first();
 		if(!$registration){
 			return redirect()->back();
 		}		
@@ -61,9 +64,16 @@ class PaymentController extends Controller {
 			$registration->ticket->tickets_sold++;
 			$registration->ticket->save();
 			$paytm_transaction = PaytmTransaction::create($paymentData['data']);
+			Mail::send('emails.ticket', ['registration' => $registration], function($message) use($registration)
+			{
+			    $message->to($registration->email, $registration->name)->subject('World Health Day Summit Ticket!');
+			});
 			return redirect('success');
+		}else{
+			$paytm_transaction = PaytmTransaction::create($paymentResponse);
+			return redirect('failure');		
+
 		}
-		return redirect('failure');		
 	}
 
 

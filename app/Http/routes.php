@@ -33,11 +33,11 @@ Route::post('/paytm/callback','PaymentController@callbackRequestFromPaytm');
 
 
 Route::get('success',function(){
-	return "SUccess";
+	return view('payment.success');
 });
 
 Route::get('failure',function(){
-	return "Failure";
+	return view('payment.failure');
 });
 
 Route::controllers([

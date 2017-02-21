@@ -40,8 +40,8 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">EcapSol</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+				<div class="title" style="color:Red">Failure!!</div>
+				<div class="quote">Try some other time.</div>
 			</div>
 		</div>
 	</body>

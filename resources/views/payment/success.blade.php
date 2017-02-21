@@ -40,8 +40,8 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">EcapSol</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+				<div class="title" style="color:Green">Success!!</div>
+				<div class="quote">Ticket is mailed to your Mail address.</div>
 			</div>
 		</div>
 	</body>
