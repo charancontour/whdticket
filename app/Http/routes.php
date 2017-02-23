@@ -20,6 +20,7 @@ Route::get('home', 'HomeController@index');
  * Admin Routes.
  */
 Route::get('dashboard','AdminController@index');
+Route::get('ticket/details/{id}','AdminController@ticketDetails');
 
 /**
  * Registration Routes.

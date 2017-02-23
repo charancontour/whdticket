@@ -11,4 +11,9 @@ class Registration extends Model {
         return $this->belongsTo('App\Ticket');
     }
 
+    public function paytm()
+    {
+        return $this->hasOne('App\PaytmTransaction','ORDERID');
+    }    
+
 }

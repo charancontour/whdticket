@@ -84,7 +84,7 @@
 				<td>{{$registration->ticket->title}}</td>
 				<td>{{$registration->email}}</td>
 				<td>{{$registration->amount}}</td>
-				<td><button class="btn btn-large btn-success">View</button></td>
+				<td><a href="/ticket/details/{{$registration->id}}"><button class="btn btn-large btn-success">View</button></a></td>
 			</tr>
 			@endforeach
 		</table>
