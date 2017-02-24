@@ -22,9 +22,13 @@ Route::get('home', 'HomeController@index');
 Route::get('dashboard','AdminController@index');
 Route::get('ticket/details/{id}','AdminController@ticketDetails');
 
+//Agenda Routes.
+Route::get('agenda/index','AgendaController@index');
+
 /**
  * Registration Routes.
  */
+Route::post('registerform','RegistrationController@registerform');
 Route::get('register','RegistrationController@create');
 Route::post('register','RegistrationController@store');
 

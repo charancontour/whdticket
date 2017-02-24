@@ -9,6 +9,29 @@ use App\Registration;
 use App\Ticket;
 class RegistrationController extends Controller {
 
+
+	/**
+	 * Registration form from other webiste
+	 */
+	public function registerform(Request $request)
+	{
+		$input = [];
+		$input['name'] = $request->get('name');
+		$input['phonenumber'] = $request->get('phonenumber');
+		$input['organization'] = $request->get('organization');
+		$input['address'] = $request->get('address');
+		$input['city'] = $request->get('city');
+		$input['state'] = $request->get('state');
+		$input['zipcode'] = $request->get('zipcode');
+		$input['country'] = $request->get('country');
+		$input['email'] = $request->get('email');
+		$input['designation'] = $request->get('designation');
+
+		$tickets = Ticket::all();
+		return view('ticket.registerform',compact('input','tickets'));
+
+	}
+
 	/**
 	 * Registration for a ticket.
 	 */
