@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model {
 
-	protected $fillable = ['amount','ticket_id','name','address','phonenumber','state','country','city','zipcode','organization','email','designation'];
+	protected $fillable = ['number_of_tickets','amount','ticket_id','name','address','phonenumber','state','country','city','zipcode','organization','email','designation'];
 
 	public function ticket()
     {
