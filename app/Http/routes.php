@@ -23,7 +23,10 @@ Route::get('dashboard','AdminController@index');
 Route::get('ticket/details/{id}','AdminController@ticketDetails');
 
 //Agenda Routes.
-Route::get('agenda/index','AgendaController@index');
+Route::get('agenda/index',['middleware'=>'auth','uses'=>'AgendaController@index']);
+Route::post('agenda/store',['middleware'=>'auth','uses'=>'AgendaController@store']);
+Route::get('agenda/delete/{agenda_id}',['middleware'=>'auth','uses'=>'AgendaController@destroy']);
+Route::get('api/agenda/response','AgendaController@apiResponse');
 
 /**
  * Registration Routes.
