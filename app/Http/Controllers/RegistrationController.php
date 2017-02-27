@@ -52,14 +52,16 @@ class RegistrationController extends Controller {
 			if($input['amount'] == 0){
 				return redirect()->back()->withErrors(['amount'=>'Amount should be greater than 0.']);
 			}
-		}
-		if(!$this->checkForTicketsAvailabilty($input['ticket_id'],$input['number_of_tickets'])){
-			return redirect()->back()->withErrors(['tickets availabity'=>'Tickets are not avilable.']);
-		}
+		}else{
+			if(!$this->checkForTicketsAvailabilty($input['ticket_id'],$input["number_of_tickets_".$input['ticket_id']])){
+				return redirect()->back()->withErrors(['tickets availabity'=>'Tickets are not avilable.']);
+			}	
+		}		
 
 		$registration = Registration::create($input);		
 
 		if($registration->ticket->id != 3){
+			$registration->number_of_tickets = intval($input["number_of_tickets_".$input['ticket_id']]);
 			$registration->amount = $registration->number_of_tickets * $registration->ticket->amount;
 			$registration->save();	
 		}				

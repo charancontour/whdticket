@@ -93,6 +93,12 @@
 						<br>
 						<h3 style = 'text-align:center'>Tickets</h3>
 						<br>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Number Of Tickets:</label>
+							
+								<input type="text" class="form-control" name="number_of_tickets" value="{{ old('number_of_tickets') }}" required>
+							
+						</div>
 						@foreach($tickets as $ticket)
 							<?php $available_tickets = $ticket->total_tickets - $ticket->tickets_sold ?>
 							<div class="" >															    

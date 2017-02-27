@@ -32,8 +32,7 @@
 								@endif
 								required>
 							
-						</div>
-
+						</div>						
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address	<span>*</span></label>
 							
@@ -42,6 +41,7 @@
 								value="{{ $input['email'] }}" 
 								@else
 								value="{{ old('email') }}"
+								@endif
 								required>
 							
 						</div>
@@ -152,23 +152,21 @@
 						<br>
 						<h3 style = 'text-align:center'>Tickets</h3>
 						<br>
-						<div class="form-group">
-							<label class="col-md-4 control-label">Number Of Tickets	<span>*</span></label>							
-							<select class="form-control" name="number_of_tickets" onchange="computeAmount()">
-								<?php for ($i=0; $i < 4; $i++) { ?>
-									<option value="{{$i}}">{{$i}}</option>
-								<?php } ?>								
-							</select>
-						</div>
-						@foreach($tickets as $ticket)
+					
+						@foreach($tickets as $key => $ticket)
 							<?php $available_tickets = $ticket->total_tickets - $ticket->tickets_sold ?>
 							<div class="" >															    
 								<input type="radio" class="form-check-input" data-amount="{{$ticket->amount}}" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" onchange='computeAmount()' required>
 								{{$ticket->description}}
 								@if($ticket->amount == 0)
-								<input type="number" min="1"   name="amount">
+								<input type="number" min="1"   name="amount" onkeyup='computeAmount()'>
 								@else
-								( Available Tickets :: {{$available_tickets}} )
+								<!-- ( Available Tickets :: {{$available_tickets}} ) -->
+								<select type="number" name="number_of_tickets_{{$ticket->id}}" id="number_of_tickets_{{$ticket->id}}" onchange="computeAmount()">
+									<?php for ($i=1; $i <= 5; $i++) { 
+										echo "<option value='$i'>$i</option>";
+									 } ?>
+								</select>
 								@endif
 								
 						    </div>
@@ -195,7 +193,7 @@
 				if(tickets[i].value == 3){
 					amount = document.getElementsByName('amount')[0].value;
 				}else{
-					var no_of_tickets = document.getElementsByName(number_of_tickets)[0].value;
+					var no_of_tickets = document.getElementById('number_of_tickets_'+tickets[i].value).value;
 					amount = parseInt(no_of_tickets) * parseInt(tickets[i].getAttribute('data-amount'));
 				}
 				break;

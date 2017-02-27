@@ -56,12 +56,12 @@ class PaymentController extends Controller {
 	 */
 	public function callbackRequestFromPaytm(Request $request){
 		$paymentResponse =  $request->all();
-		$paymentData     =  Paytm::verifyPayment($paymentResponse);		
+		$paymentData     =  Paytm::verifyPayment($paymentResponse);	
 		if($paymentData['status'] == 'success'){			
-			$registration = Registration::where('id',$paymentData['data']['ORDERID'])->first();
+			$registration = Registration::where('id',$paymentData['data']['ORDERID'])->first();			
 			$registration->paid_flag = 1;
 			$registration->save();
-			$registration->ticket->tickets_sold++;
+			$registration->ticket->tickets_sold += $registration->number_of_tickets;
 			$registration->ticket->save();
 			$paytm_transaction = PaytmTransaction::create($paymentData['data']);
 			Mail::send('emails.ticket', ['registration' => $registration], function($message) use($registration)

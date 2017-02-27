@@ -34,6 +34,9 @@ Route::get('api/agenda/response','AgendaController@apiResponse');
 Route::post('registerform','RegistrationController@registerform');
 Route::get('register','RegistrationController@create');
 Route::post('register','RegistrationController@store');
+Route::get('testregister',function(){
+	return view('test.index');
+});
 
 
 
