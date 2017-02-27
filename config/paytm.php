@@ -19,7 +19,7 @@
         'industry_type' => 'Retail',
         'channel'       => 'WEB',
         'order_prefix'  => 'EDU',
-        'website'       => 'whdticket.dev',
+        'website'       => 'WEB_STAGING',        
 
         /*
         |--------------------------------------------------------------------------
@@ -36,8 +36,8 @@
             ],
 
             'live' => [
-                'merchant_key'  => 'your-merchant-key',
-                'merchant_mid'  => 'your-merchant-id',
+                'merchant_key'  => 'I2k@k4reQICX_ydb',
+                'merchant_mid'  => 'ecapso25803131227137',
             ]
 
         ],

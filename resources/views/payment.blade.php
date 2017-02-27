@@ -52,7 +52,13 @@
 						<tr>
 							<td>Ticket Issued</td>
 							<td>{{$registration->ticket->description}}</td>
+						</tr>
+						@if($registration->ticket_id != 3)
+						<tr>
+							<td>Number Of Tickets</td>
+							<td>{{$registration->number_of_tickets}}</td>
 						</tr>					
+						@endif
 						<tr>
 							<td>Ticket Amount</td>
 							<td>{{$registration->amount}}</td>

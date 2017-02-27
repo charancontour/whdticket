@@ -15,6 +15,16 @@ class CreatePaytmTransactionsTable extends Migration {
 		Schema::create('paytm_transactions', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('MID');
+			$table->string('ORDERID');
+			$table->double('TXNAMOUNT');
+			$table->string('BANKTXNID');
+			$table->string('STATUS');
+			$table->string('RESPCODE');
+			$table->string('RESPMSG');
+			$table->string('GATEWAYNAME');
+			$table->string('BANKNAME');
+			$table->string('PAYMENTMODE');
 			$table->timestamps();
 		});
 	}

@@ -15,11 +15,28 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+
+/**
+ * Admin Routes.
+ */
+Route::get('dashboard','AdminController@index');
+Route::get('ticket/details/{id}','AdminController@ticketDetails');
+
+//Agenda Routes.
+Route::get('agenda/index',['middleware'=>'auth','uses'=>'AgendaController@index']);
+Route::post('agenda/store',['middleware'=>'auth','uses'=>'AgendaController@store']);
+Route::get('agenda/delete/{agenda_id}',['middleware'=>'auth','uses'=>'AgendaController@destroy']);
+Route::get('api/agenda/response','AgendaController@apiResponse');
+
 /**
  * Registration Routes.
  */
+Route::post('registerform','RegistrationController@registerform');
 Route::get('register','RegistrationController@create');
 Route::post('register','RegistrationController@store');
+Route::get('testregister',function(){
+	return view('test.index');
+});
 
 
 
@@ -30,6 +47,15 @@ Route::post('register','RegistrationController@store');
 Route::get('payment/{registration_id}','PaymentController@index');
 Route::post('/paytm','PaymentController@sendRequestToPaytm');
 Route::post('/paytm/callback','PaymentController@callbackRequestFromPaytm');
+
+
+Route::get('success',function(){
+	return view('payment.success');
+});
+
+Route::get('failure',function(){
+	return view('payment.failure');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

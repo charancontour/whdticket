@@ -93,13 +93,23 @@
 						<br>
 						<h3 style = 'text-align:center'>Tickets</h3>
 						<br>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Number Of Tickets:</label>
+							
+								<input type="text" class="form-control" name="number_of_tickets" value="{{ old('number_of_tickets') }}" required>
+							
+						</div>
 						@foreach($tickets as $ticket)
-							<div class="">															    
+							<?php $available_tickets = $ticket->total_tickets - $ticket->tickets_sold ?>
+							<div class="" >															    
 								<input type="radio" class="form-check-input" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" required>
 								{{$ticket->description}}
 								@if($ticket->amount == 0)
 								<input type="number" name="amount">
-								@endif								
+								@else
+								( Available Tickets :: {{$available_tickets}} )
+								@endif
+								
 						    </div>
 					    @endforeach	
 					    <br>				    
