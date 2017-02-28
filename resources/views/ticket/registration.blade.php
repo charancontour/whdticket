@@ -90,9 +90,11 @@
 								<input type="text" class="form-control" name="country" value="{{ old('Country') }}" required>
 							
 						</div>
-						<br>
-						<h3 style = 'text-align:center'>Tickets</h3>
-						<br>
+						
+						<div class="form-section-title">
+							<h3>Tickets</h3>
+						</div>
+						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Number Of Tickets:</label>
 							

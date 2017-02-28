@@ -149,15 +149,19 @@
 								required>
 							
 						</div>
-						<br>
-						<h3 style = 'text-align:center'>Tickets</h3>
-						<br>
-					
+						
+						<div class="form-section-title">
+							<h3>Tickets</h3>
+						</div>
+
 						@foreach($tickets as $key => $ticket)
 							<?php $available_tickets = $ticket->total_tickets - $ticket->tickets_sold ?>
-							<div class="" >															    
-								<input type="radio" class="form-check-input" data-amount="{{$ticket->amount}}" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" onchange='computeAmount()' required>
-								{{$ticket->description}}
+							<div class="form-group radios" >															    
+								<label>
+									<input type="radio" class="form-check-input" data-amount="{{$ticket->amount}}" name="ticket_id" id="optionsRadios1" value="{{$ticket->id}}" onchange='computeAmount()' required>
+									<span>{{$ticket->description}}</span>
+								</label>
+
 								@if($ticket->amount == 0)
 								<input type="number" min="1"   name="amount" onkeyup='computeAmount()'>
 								@else
@@ -173,7 +177,7 @@
 					    @endforeach	
 					    <br>				    
 					    <div class="form-group">
-							<label class="col-md-4 control-label">Total Amount:	<span id="total_amount">0</span></label>														
+							<label class="col-md-4 control-label">Total Amount:	<i class="fa fa-inr" aria-hidden="true"></i> <span id="total_amount" style="color:inherit">0</span></label>														
 						</div>						
 						<div class="form-group">
 							<input type="submit" value="Register">

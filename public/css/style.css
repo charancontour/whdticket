@@ -57,7 +57,35 @@ form
 	margin-bottom: 10px;
 }
 
-.form-group input 
+
+.form-group.radios 
+{
+	justify-content:space-between;
+}
+
+.form-group.radios label span
+{
+	color: inherit;
+	margin-left: 10px;
+}
+
+.form-group input[type="number"]
+{
+	flex-basis:auto;
+	padding: 8px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+}
+
+.form-group select 
+{
+	border: 0;
+	width: 10%;
+	height: 30px;
+	text-align: center;
+}
+
+.form-group input[type="text"],.form-group input[type="email"] 
 {
 	flex-basis:75%;
 	padding: 8px;
@@ -74,11 +102,16 @@ input[type='submit']
 {
 	padding: 12px;
 	color: #fff;
-	margin-left: 25%;
+	/*margin-left: 25%;*/
+	flex-basis:100%;
+	margin-top: 30px;
 	background-color: rgba(238,22,58,0.9);
 	border: 0;
 	cursor: pointer;
+	font-size: 18px;
 }
+
+
 .form-group span 
 {
 	color: red;
@@ -87,6 +120,21 @@ input[type='submit']
 .nav li 
 {
 	list-style: none;
+}
+
+
+/* Form Section Title */
+.form-section-title
+{
+	padding: 10px;
+	background-color: #f4f4f4;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.form-section-title h3 
+{
+	text-align: center;
 }
 
 footer 
