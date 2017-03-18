@@ -144,7 +144,8 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'Princealikhan\PaytmPayment\PaytmServiceProvider',		
+		'Princealikhan\PaytmPayment\PaytmServiceProvider',	
+		'Softon\Indipay\IndipayServiceProvider',	
 
 	],
 
@@ -193,7 +194,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Paytm' 	=> 'Princealikhan\PaytmPayment\Facades\Paytm',		
+		'Paytm' 	=> 'Princealikhan\PaytmPayment\Facades\Paytm',
+		'Indipay' 	=> 'Softon\Indipay\Facades\Indipay',		
 
 	],
 

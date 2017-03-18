@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 @section('content')
-<div class="container-fluid">
-	<div class="row">
+<div class="container">
+	<!-- <div class="row">
 		<div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -68,26 +68,40 @@
                 </a>
             </div>
         </div>
-	</div>
+	</div> -->
 	<div class="row">
-		<table class="table table-striped table-responsive">
-			<tr>
-				<th>Name</th>
-				<th>Ticket Issued</th>
-				<th>Email</th>
-				<th>Amount Paid</th>
-				<th>Transaction Details</th>
-			</tr>
-			@foreach($registrations as $registration)
-			<tr>
-				<td>{{$registration->name}}</td>
-				<td>{{$registration->ticket->title}}</td>
-				<td>{{$registration->email}}</td>
-				<td>{{$registration->amount}}</td>
-				<td><a href="/ticket/details/{{$registration->id}}"><button class="btn btn-large btn-success">View</button></a></td>
-			</tr>
-			@endforeach
+		<table class="table table-striped table-responsive" id="tickets">
+            <thead>
+    			<tr>
+    				<th>Name</th>
+                    <th>Registration ID</th>
+    				<th>Ticket Issued</th>
+    				<th>Email</th>
+    				<th>Amount Paid</th>
+    				<th>Transaction Details</th>
+    			</tr>
+            </thead>
+            <tbody>
+    			@foreach($registrations as $registration)
+    			<tr>
+    				<td>{{$registration->name}}</td>
+                    <td>{{$registration->id}}</td>
+    				<td>{{$registration->ticket->title}}</td>
+    				<td>{{$registration->email}}</td>
+    				<td>{{$registration->amount}}</td>
+    				<td><a href="/ticket/details/{{$registration->id}}"><button class="btn btn-large btn-success">View</button></a></td>
+    			</tr>
+    			@endforeach
+            </tbody>
 		</table>
 	</div>
 </div>
+@endsection
+@section('pagelevelscripts')
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#tickets').DataTable();
+});
+</script>
+
 @endsection

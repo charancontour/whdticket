@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
-
-use Request;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Softon\Indipay\Facades\Indipay; 
 
 class WelcomeController extends Controller {
 
@@ -33,6 +34,39 @@ class WelcomeController extends Controller {
 	public function index()
 	{
 		return view('welcome');
+	}
+
+	public function testPayment(){
+		/* All Required Parameters by your Gateway */
+
+      $parameters = [
+        'tid' => '1233221223322',
+        'order_id' => '1232212',
+        'amount' => '12.00',
+        'firstname' => 'charan',
+        'email' => 'charan.20.teja@gmail.com',
+        'phone' => '9999999999',
+        'productinfo' => 'required',
+        'udf1' => '1',
+
+      ];
+
+      $order = Indipay::prepare($parameters);
+      return Indipay::process($order);
+		// return view('testpayumoney');
+	}
+
+	public function testResponse(Request $request){		
+		// dd(Request::all());
+        // For default Gateway
+        // $response = Indipay::response($request);
+        
+        // For Otherthan Default Gateway
+        $response = Indipay::gateway('PayUMoney')->response($request);
+
+        dd($response);
+    
+    
 	}
 	
 

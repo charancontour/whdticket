@@ -117,7 +117,8 @@
 					    <br>				    
 
 						<div class="form-group">
-							<input type="submit" value="Register">
+							<input type="submit" name="payment" value="paytm">
+							<input type="submit" name="payment" value="payumoney">
 						</div>
 					</form>
 				</div>

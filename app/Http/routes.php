@@ -16,6 +16,9 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 
+Route::get('testpay','WelcomeController@testPayment');
+
+
 /**
  * Admin Routes.
  */
@@ -45,8 +48,9 @@ Route::get('testregister',function(){
  */
 
 Route::get('payment/{registration_id}','PaymentController@index');
-Route::post('/paytm','PaymentController@sendRequestToPaytm');
+Route::post('/paytm','PaymentController@paymentHandle');
 Route::post('/paytm/callback','PaymentController@callbackRequestFromPaytm');
+Route::post('payumoney/callback','PaymentController@callbackRequestFromPayumoney');
 
 
 Route::get('success',function(){

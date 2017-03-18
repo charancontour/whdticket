@@ -14,6 +14,11 @@ class Registration extends Model {
     public function paytm()
     {
         return $this->hasOne('App\PaytmTransaction','ORDERID');
-    }    
+    }  
+
+    public function payumoney()
+    {
+    	return $this->hasOne('App\PayumoneyTransaction','registration_id');
+    }  
 
 }

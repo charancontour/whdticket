@@ -38,7 +38,7 @@
 			<a href="/"><img src="{{asset('/images/nimcare.png')}}"></a>		
 		</div>
 		<div class="copyright">
-			<span><i>Powered By</i> &nbsp;<a href="">www.ecapandsol.com</a></span>
+			<span><i>Powered By</i> &nbsp;<a href="">www.capandsol.com</a></span>
 		</div>
 	</footer>
 	<!-- Scripts -->

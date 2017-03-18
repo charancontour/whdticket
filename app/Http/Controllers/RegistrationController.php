@@ -46,8 +46,7 @@ class RegistrationController extends Controller {
 	 */
 	public function store(Requests\RegistrationRequest $request)
 	{	
-		$input = $request->all();		
-
+		$input = $request->all();				
 		if($input['ticket_id'] == 3){
 			if($input['amount'] == 0){
 				return redirect()->back()->withErrors(['amount'=>'Amount should be greater than 0.']);

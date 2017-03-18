@@ -39,7 +39,7 @@ class AdminController extends Controller {
 	{
 		$registration = Registration::findOrFail($id);
 		$registration_details = [];
-		$registration_details['Name'] = $registration->name;
+		$registration_details['Name']         = $registration->name;
 		$registration_details['organization'] = $registration->organization;
 		$registration_details['Designation']  = $registration->designation;
 		$registration_details['Address'] 	  = $registration->address;
@@ -63,6 +63,15 @@ class AdminController extends Controller {
 			$payment_details['Payment Mode'] = $registration->paytm->PAYMENTMODE;
 			$payment_details['Issued On'] = $registration->paytm->created_at;
 
+		}
+
+		if($registration->payment_method == 'payumoney'){
+			$payment_details['Payment Method'] = 'Payumoney';
+			$payment_details['Status'] = $registration->payumoney->status;
+			$payment_details['Amount Paid'] = $registration->payumoney->net_amount_debit;
+			$payment_details['MIH PAYID'] = $registration->payumoney->mihpayid;
+			$payment_details['PayUmoney ID'] = $registration->payumoney->payuMoneyId;
+			$payment_details['Issued On'] = $registration->payumoney->created_at;
 		}
 		
 		return view('dashboard.ticket_details',compact('registration_details','payment_details'));

@@ -64,7 +64,7 @@
 							<td>{{$registration->amount}}</td>
 						</tr>
 						<tr>
-							<td colspan="2" style="text-align:center">Payment Options</td>
+							<td colspan="2"  class="payment-options-heading">Payment Options</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align:center">
@@ -72,7 +72,10 @@
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="hidden" name="registration_id" value="{{$registration->id}}">
 									<div class="form-group">										
-										<input type="submit" value="Pay with Paytm">
+										<input type="submit" name="payment_method" value="Paytm">
+										<input type="submit" name="payment_method" style="margin-left: 10px" value="PayUmoney">
+										<!-- <a href="#" class="payment-link">PayUmoney</a>									 -->
+										<a href="https://www.plexusmd.com/event/WHDS17" class="payment-link">PlexusMD</a>										
 									</div>
 								</form>
 							</td>
